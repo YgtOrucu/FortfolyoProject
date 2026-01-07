@@ -7,47 +7,23 @@
 
 @await Component.InvokeAsync("Head")
 
-
 <body id="top">
 
-    <!-- header
-    ================================================== -->
     @await Component.InvokeAsync("Navbar")
-    <!-- end s-header -->
-
-    <!-- home
-    ================================================== -->
+    
     @await Component.InvokeAsync("Feature")
-
-    <!-- about
-    ================================================== -->
+   
     @await Component.InvokeAsync("About")
-    <!-- end about -->
-
-    <!-- works
-    ================================================== -->
+   
     @await Component.InvokeAsync("Portfolyo")
-    <!-- end works -->
-
-    <!-- testimonials
-    ================================================== -->
+    
     @await Component.InvokeAsync("Testimonial")
-    <!-- end s-testimonials -->
-
-    <!-- s-stats
-    ================================================== -->
+    
     @await Component.InvokeAsync("Statistic")
-    <!-- end s-stats -->
-
-    <!-- contact
-    ================================================== -->
+    
     @await Component.InvokeAsync("Contact")
-    <!-- end s-contact -->
 
-    <!-- footer
-    ================================================== -->
     @await Component.InvokeAsync("Footer")  
-    <!-- end footer -->
+   
 </body>
-
 </html>

@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FortfolyoProject.DataAccessLayer.Context;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FortfolyoProject.ViewComponents
 {
     public class FeatureViewComponent : ViewComponent
     {
+        PortfolyoContext context = new PortfolyoContext();
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = context.Features.ToList();
+            return View(values);
         }
     }
 }
