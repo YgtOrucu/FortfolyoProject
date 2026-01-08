@@ -1,0 +1,21 @@
+﻿@model Feature
+@{
+    ViewData["Title"] = "EditFeature";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h3>EditFeature</h3>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateFeature" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.FeatureId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.Title, "Başlık", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <textarea asp-for="Description" type="text" rows="5" class="form-control" style="width:50%"> </textarea>
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>

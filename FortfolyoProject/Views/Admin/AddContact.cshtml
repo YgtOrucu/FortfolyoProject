@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "AddContact";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h4>AddContact</h4>
+<br />
+
+<form asp-controller="Admin" asp-action="AddContact" method="post">
+
+    <label for="Title">Başlık</label>
+    <input class="form-control" style="width:50%" id="Title" name="Title" />
+    <br />
+    <label for="Description">Açıklama</label>
+    <textarea id="Description" name="Description" class="form-control" style="width:50%" rows="3"></textarea>
+    <br />
+    <label for="Phone">Telefon</label>
+    <input class="form-control" style="width:50%" id="Phone" name="Phone" type="tel" />
+    <br />
+    <label for="Email">Mail</label>
+    <input class="form-control" style="width:50%" id="Email" name="Email" type="email" />
+    <br />
+    <label for="Address">Adres</label>
+    <textarea id="Address" name="Address" class="form-control" style="width:50%" rows="3"></textarea>
+    <br />
+    <button type="submit" class="btn btn-success">
+        Add
+    </button>
+</form>
+

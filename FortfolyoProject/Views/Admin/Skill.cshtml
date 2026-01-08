@@ -1,0 +1,41 @@
+﻿@model List<Skills>
+@{
+    ViewData["Title"] = "Skill";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Yeteneklerim</div>
+            </div>
+            <div class="card-body">
+                <table class="table table-head-bg-success">
+                    <thead>
+                        <tr>
+                            <th scope="col">Başlık</th>
+                            <th scope="col">Value</th> 
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@(item.Title)</td>
+                                <td>@(item.Values)</td>                  
+                                <td>
+                                    <a asp-controller="Admin" asp-action="EditSkill" asp-route-id="@item.SkillsId" class="btn btn-warning">Edit</a>
+                                    <a asp-controller="Admin" asp-action="DeleteSkill" asp-route-id="@item.SkillsId" class="btn btn-danger"> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-controller="Admin" asp-action="AddSkill" class="btn btn-primary"> Add</a>
+            </div>
+        </div>
+    </div>
+</div>
+

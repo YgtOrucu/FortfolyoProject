@@ -1,0 +1,22 @@
+﻿@model Skills
+@{
+    ViewData["Title"] = "EditSkill";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h3>EditSkill</h3>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateSkill" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.SkillsId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.Title, "Başlık", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <label asp-for="Values">Value</label>
+    <input asp-for="Values" type="number" class="form-control" style="width:50%" />
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+

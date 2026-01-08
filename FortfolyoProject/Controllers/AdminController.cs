@@ -11,7 +11,6 @@ namespace FortfolyoProject.Controllers
         {
             return View();
         }
-
         #region About
         public IActionResult About()
         {
@@ -118,6 +117,174 @@ namespace FortfolyoProject.Controllers
             context.Experiences.Update(e);
             context.SaveChanges();
             return RedirectToAction("Experience");
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Skill
+        public IActionResult Skill()
+        {
+            var values = context.Skills.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        public IActionResult AddSkill()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddSkill(Skills s)
+        {
+            context.Skills.Add(s);
+            context.SaveChanges();
+            return RedirectToAction("Skill");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeleteSkill(int id)
+        {
+            var deletedvalue = context.Skills.Find(id);
+            context.Skills.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Skill");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditSkill(int id)
+        {
+            var values = context.Skills.Find(id);
+            return View("EditSkill", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateSkill(Skills s)
+        {
+            context.Skills.Update(s);
+            context.SaveChanges();
+            return RedirectToAction("Skill");
+        }
+
+        #endregion
+
+        #endregion 
+
+        #region Feature
+        public IActionResult Feature()
+        {
+            var values = context.Features.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        public IActionResult AddFeature()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddFeature(Feature f)
+        {
+            context.Features.Add(f);
+            context.SaveChanges();
+            return RedirectToAction("Feature");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeleteFeature(int id)
+        {
+            var deletedvalue = context.Features.Find(id);
+            context.Features.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Feature");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditFeature(int id)
+        {
+            var values = context.Features.Find(id);
+            return View("EditFeature", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateFeature(Feature f)
+        {
+            context.Features.Update(f);
+            context.SaveChanges();
+            return RedirectToAction("Feature");
+        }
+
+        #endregion
+
+        #endregion 
+
+        #region Contact
+        public IActionResult Contact()
+        {
+            var values = context.Contacts.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        public IActionResult AddContact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddContact(Contact c)
+        {
+            context.Contacts.Add(c);
+            context.SaveChanges();
+            return RedirectToAction("Contact");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeleteContact(int id)
+        {
+            var deletedvalue = context.Contacts.Find(id);
+            context.Contacts.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Contact");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditContact(int id)
+        {
+            var values = context.Contacts.Find(id);
+            return View("EditContact", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateContact(Contact c)
+        {
+            context.Contacts.Update(c);
+            context.SaveChanges();
+            return RedirectToAction("Contact");
         }
 
         #endregion

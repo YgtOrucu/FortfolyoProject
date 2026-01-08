@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "AddFeature";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h4>AddFeature</h4>
+<br />
+
+<form asp-controller="Admin" asp-action="AddFeature" method="post">
+
+    <label for="Title">Başlık</label>
+    <input class="form-control" style="width:50%" id="Title" name="Title" />
+    <br />
+    <label for="Description">Açıklama</label>
+    <textarea id="Description" name="Description" class="form-control" style="width:50%" rows="5"></textarea>
+    <br />
+    <button type="submit" class="btn btn-success">
+        Add
+    </button>
+</form>
