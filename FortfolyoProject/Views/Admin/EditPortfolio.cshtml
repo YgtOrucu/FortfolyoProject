@@ -1,0 +1,43 @@
+﻿@model Portfolio
+@{
+    ViewData["Title"] = "EditPortfolio";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<form method="post" action="~/Admin/UpdatePortfolio" enctype="multipart/form-data">
+    <div class="modal-body">
+        <div class="mb-3">
+            @Html.HiddenFor(x => x.PortfolioId, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            <label for="Title" class="form-label">Başlık</label>
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            <label for="SubTitle" class="form-label">AltBaşlık</label>
+            @Html.TextBoxFor(x => x.SubTitle, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            <label for="ImageUrl" class="form-label">Resim Adresi</label>
+            @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control", @type = "file" })
+        </div>
+
+        <div class="mb-3">
+            <label for="PortfolioUrl" class="form-label">Proje Adresi</label>
+            @Html.TextBoxFor(x => x.PortfolioUrl, new { @class = "form-control" })
+        </div>
+
+        <div class="mb-3">
+            <label for="Description" class="form-label">Açıklama</label>
+            @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="@Url.Action("Portfolio")" class="btn btn-danger btn-sm">Return</a>
+        <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+    </div>
+</form>
+

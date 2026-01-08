@@ -1,0 +1,25 @@
+﻿@model SocialMedia
+@{
+    ViewData["Title"] = "EditSocialMedia";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h3>EditAbout</h3>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateSocialMedia" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.SocialMediaId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.Title, "Başlık", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Icon, "Icon", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Url, "Url", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Url, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+

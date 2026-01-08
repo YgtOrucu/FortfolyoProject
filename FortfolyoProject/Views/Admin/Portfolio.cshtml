@@ -1,0 +1,163 @@
+﻿@model List<Portfolio>
+@{
+    ViewData["Title"] = "Portfolio";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<style>
+    .portfolio-card {
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all .3s ease;
+    }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+    .portfolio-image {
+        height: 250px;
+        overflow: hidden;
+    }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+        }
+
+    .modal-content {
+        animation: fadeUp .3s ease;
+    }
+
+</style>
+
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold">Portfolyo</h3>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addPortfolioModal">
+        <i class="fas fa-plus"></i> Yeni Ekle
+    </button>
+</div>
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6" style="margin-top:auto">
+            <div class="card portfolio-card shadow-sm border-0 h-100">
+
+                <div class="portfolio-image">
+                    <img src="@item.ImageUrl" alt="@item.Title" />
+                </div>
+
+                <div class="card-body">
+                    <h5 class="fw-bold mb-1">@item.Title</h5>
+                    <small class="text-muted">@item.SubTitle</small>
+
+                    <p class="mt-2 text-muted small">
+                        @(item.Description.Length > 80
+                                            ? item.Description.Substring(0, 80) + "..."
+                                            : item.Description)
+                </p>
+            </div>
+
+                <div class="card-footer bg-white border-0 d-flex justify-content-between">
+                    <a href="@item.PortfolioUrl" target="_blank" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-link"></i>
+                        Linke Git
+                    </a>
+
+                    <div>
+                        <a asp-controller="Admin"
+                           asp-action="EditPortfolio"
+                           asp-route-id="@item.PortfolioId"
+                           class="btn btn-sm btn-outline-warning me-1">
+                            <i class="fas fa-pen"></i>
+                            Edit
+                        </a>
+
+                        <a asp-controller="Admin"
+                           asp-action="DeletePortfolio"
+                           asp-route-id="@item.PortfolioId"
+                           class="btn btn-sm btn-outline-danger">
+                            <i class="fas fa-trash"></i>
+                            Delete
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        }
+</div>
+
+<div class="modal fade" id="addPortfolioModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+
+            <div class="modal-header border-0">
+                <h4 class="modal-title fw-bold">
+                    <i class="fas fa-folder-plus me-2"></i> Yeni Portfolyo
+                </h4>
+                <button type="button" class="btn-close" data-dismiss="modal"></button>
+            </div>
+
+            <form asp-controller="Admin"
+                  asp-action="AddPortfolio"
+                  method="post"
+                  enctype="multipart/form-data">
+
+                <div class="modal-body">
+
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label">Başlık</label>
+                            <input type="text" name="Title" class="form-control" required />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Alt Başlık</label>
+                            <input type="text" name="SubTitle" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Proje URL</label>
+                            <input type="text" name="PortfolioUrl" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Açıklama</label>
+                            <textarea name="Description"
+                                      rows="4"
+                                      class="form-control"
+                                      placeholder="Kısa bir açıklama yaz..."></textarea>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Görsel</label>
+                            <input type="file" name="ImageUrl" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer border-0">
+                    <button type="button"
+                            class="btn btn-light"
+                            data-dismiss="modal">
+                        Vazgeç
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Kaydet
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+

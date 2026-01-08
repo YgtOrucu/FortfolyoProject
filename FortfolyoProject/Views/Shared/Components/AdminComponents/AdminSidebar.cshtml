@@ -45,6 +45,13 @@
             </li>
 
             <li class="nav-item">
+                <a asp-controller="Admin" asp-action="Admin" class="nav-link">
+                    <i class="la la-dashboard"></i>
+                    <p>Admin</p> @* Tamamlandı *@
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a asp-controller="Admin" asp-action="About" class="nav-link">
                     <i class="la la-user"></i>
                     <p>Hakkımda</p> @* Tamamlandı *@
@@ -75,31 +82,29 @@
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Contact" class="nav-link">
                     <i class="la la-envelope"></i>
-                    <p>İletişim Bilgileri</p>
+                    <p>İletişim Bilgileri</p> @* Tamamlandı *@
                 </a>
             </li>
 
             <li class="nav-item">
-                <a asp-controller="Admin" asp-action="Project" class="nav-link">
+                <a asp-controller="Admin" asp-action="Portfolio" class="nav-link">
                     <i class="la la-folder-open"></i>
-                    <p>Projelerim</p>
+                    <p>Projelerim</p> @* Tamamlandı *@
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="SocialMedia" class="nav-link">
                     <i class="la la-share-alt"></i>
-                    <p>Sosyal Medya</p>
+                    <p>Sosyal Medya</p> @* Tamamlandı *@
                 </a>
             </li>
 
             <li class="nav-item">
-                <form asp-controller="Admin" asp-action="Logout" method="post" class="nav-link p-0">
-                    <button type="submit" class="btn btn-link nav-link text-left">
-                        <i class="la la-sign-out"></i>
-                        <p>Çıkış Yap</p>
-                    </button>
-                </form>
+                <a asp-controller="Admin" asp-action="Logout" class="nav-link">
+                    <i class="la la-sign-out"></i>
+                    <p>Çıkış Yap</p>
+                </a>
             </li>
 
         </ul>

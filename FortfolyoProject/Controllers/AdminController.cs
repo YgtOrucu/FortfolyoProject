@@ -11,6 +11,63 @@ namespace FortfolyoProject.Controllers
         {
             return View();
         }
+
+        #region Admin
+        public IActionResult Admin()
+        {
+            var values = context.Admins.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAdmin(Admin a)
+        {
+            context.Admins.Add(a);
+            context.SaveChanges();
+            return RedirectToAction("Admin");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeleteAdmin(int id)
+        {
+            var deletedvalue = context.Admins.Find(id);
+            context.Admins.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Admin");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditAdmin(int id)
+        {
+            var values = context.Admins.Find(id);
+            return View("EditAdmin", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateAdmin(Admin a)
+        {
+            context.Admins.Update(a);
+            context.SaveChanges();
+            return RedirectToAction("Admin");
+        }
+
+        #endregion
+
+        #endregion
+
         #region About
         public IActionResult About()
         {
@@ -285,6 +342,167 @@ namespace FortfolyoProject.Controllers
             context.Contacts.Update(c);
             context.SaveChanges();
             return RedirectToAction("Contact");
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Portfolio
+        public IActionResult Portfolio()
+        {
+            var values = context.Portfolios.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        [HttpPost]
+        public IActionResult AddPortfolio(Portfolio p, IFormFile ImageUrl)
+        {
+
+            if (ImageUrl != null && ImageUrl.Length > 0)
+            {
+                // Web root path (wwwroot)
+                var webRootPath = HttpContext.RequestServices
+                    .GetService<IWebHostEnvironment>()
+                    .WebRootPath;
+
+                var uploadFolder = Path.Combine(
+                    webRootPath,
+                    "images"
+                );
+
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                var extension = Path.GetExtension(ImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var filePath = Path.Combine(uploadFolder, imageName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    ImageUrl.CopyTo(stream);
+                }
+
+                p.ImageUrl = "/images/" + imageName;
+            }
+
+            context.Portfolios.Add(p);
+            context.SaveChanges();
+            return RedirectToAction("Portfolio");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeletePortfolio(int id)
+        {
+            var deletedvalue = context.Portfolios.Find(id);
+            context.Portfolios.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Portfolio");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditPortfolio(int id)
+        {
+            var values = context.Portfolios.Find(id);
+            return View("EditPortfolio", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdatePortfolio(Portfolio p, IFormFile ImageUrl)
+        {
+            if (ImageUrl != null && ImageUrl.Length > 0)
+            {
+                // Web root path (wwwroot)
+                var webRootPath = HttpContext.RequestServices
+                    .GetService<IWebHostEnvironment>()
+                    .WebRootPath;
+
+                var uploadFolder = Path.Combine(
+                    webRootPath,
+                    "images"
+                );
+
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                var extension = Path.GetExtension(ImageUrl.FileName);
+                var imageName = Guid.NewGuid() + extension;
+                var filePath = Path.Combine(uploadFolder, imageName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    ImageUrl.CopyTo(stream);
+                }
+
+                p.ImageUrl = "/images/" + imageName;
+            }
+            context.Portfolios.Update(p);
+            context.SaveChanges();
+            return RedirectToAction("Portfolio");
+        }
+
+        #endregion
+
+        #endregion 
+
+        #region SocialMedia
+        public IActionResult SocialMedia()
+        {
+            var values = context.SocialMedias.ToList();
+            return View(values);
+        }
+
+        #region Add
+
+        public IActionResult AddSocialMedia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddSocialMedia(SocialMedia s)
+        {
+            context.SocialMedias.Add(s);
+            context.SaveChanges();
+            return RedirectToAction("SocialMedia");
+        }
+
+        #endregion
+
+        #region Delete
+
+        public IActionResult DeleteSocialMedia(int id)
+        {
+            var deletedvalue = context.SocialMedias.Find(id);
+            context.SocialMedias.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("SocialMedia");
+        }
+        #endregion
+
+        #region EditAndUpdate
+
+        [HttpGet]
+        public IActionResult EditSocialMedia(int id)
+        {
+            var values = context.SocialMedias.Find(id);
+            return View("EditSocialMedia", values);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateSocialMedia(SocialMedia s)
+        {
+            context.SocialMedias.Update(s);
+            context.SaveChanges();
+            return RedirectToAction("SocialMedia");
         }
 
         #endregion

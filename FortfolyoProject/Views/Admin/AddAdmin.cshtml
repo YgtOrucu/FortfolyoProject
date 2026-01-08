@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "AddAdmin";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h4>AddAdmin</h4>
+<br />
+
+<form asp-controller="Admin" asp-action="AddAdmin" method="post">
+
+    <label for="UserName">Kullanıcı Adı</label>
+    <input class="form-control" style="width:50%" id="UserName" name="UserName" />
+    <br />
+    <label for="Name">Adı</label>
+    <input class="form-control" style="width:50%" id="Name" name="Name" />
+    <br />
+    <label for="Surname">Soyadı</label>
+    <input class="form-control" style="width:50%" id="Surname" name="Surname" />
+    <br />
+    <label for="Mail">Mail</label>
+    <input class="form-control" style="width:50%" id="Mail" name="Mail" type="email" />
+    <br />
+    <label for="Phone">Phone</label>
+    <input class="form-control" style="width:50%" id="Phone" name="Phone" type="tel" />
+    <br />
+    <label for="RoleType">RoleType</label>
+    <input class="form-control" style="width:50%" id="RoleType" name="RoleType" />
+    <br />
+    <button type="submit" class="btn btn-success">
+        Add
+    </button>
+</form>

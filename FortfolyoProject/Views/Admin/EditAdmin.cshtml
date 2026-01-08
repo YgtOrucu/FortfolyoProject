@@ -1,0 +1,35 @@
+﻿@model Admin
+@{
+    ViewData["Title"] = "EditAdmin";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+
+<h3>EditAdmin</h3>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateAdmin" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.AdminId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.UserName, "Kullanıcı Adı", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Name, "Adı", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Surname, "Soyadı", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Mail, "Mail", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.Phone, "Telefon", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    @Html.LabelFor(x => x.RoleType, "Rolu", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.RoleType, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+

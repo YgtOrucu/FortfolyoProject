@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "AddSocialMedia";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h4>AddSocialMedia</h4>
+<br />
+
+<form asp-controller="Admin" asp-action="AddSocialMedia" method="post">
+
+    <label for="Title">Başlık</label>
+    <input class="form-control" style="width:50%" id="Title" name="Title" />
+    <br />
+    <label for="Icon">Icon</label>
+    <input id="Icon" name="Icon" class="form-control" style="width:50%" />
+    <br />
+    <label for="Url">Url</label>
+    <input id="Url" name="Url" class="form-control" style="width:50%" />
+    <br />
+    <button type="submit" class="btn btn-success">
+        Add
+    </button>
+</form>
+
