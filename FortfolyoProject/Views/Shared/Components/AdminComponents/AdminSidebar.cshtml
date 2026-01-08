@@ -7,8 +7,8 @@
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span>
-                        Muhsin Yigit
-                        <span class="user-level">Admin</span>
+                        @User.FindFirst("NameSurname")?.Value
+                        <span class="user-level"> @User.FindFirst("Role")?.Value</span>
                         <span class="caret"></span>
                     </span>
                 </a>
@@ -17,18 +17,13 @@
                 <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
                     <ul class="nav">
                         <li>
-                            <a href="#profile">
-                                <span class="link-collapse">Profilim</span>
+                            <a asp-controller="Admin" asp-action="Contact" class="nav-link">
+                                <span class="link-collapse">İletişim Bilgilerim</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#edit">
-                                <span class="link-collapse">Şifre Değiştir</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#settings">
-                                <span class="link-collapse">Ayarlar</span>
+                            <a asp-controller="Login" asp-action="Logout" class="nav-link">
+                                <span class="link-collapse">Çıkş Yap</span>
                             </a>
                         </li>
                     </ul>
@@ -47,68 +42,51 @@
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Admin" class="nav-link">
                     <i class="la la-dashboard"></i>
-                    <p>Admin</p> @* Tamamlandı *@
+                    <p>Admin</p> 
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="About" class="nav-link">
                     <i class="la la-user"></i>
-                    <p>Hakkımda</p> @* Tamamlandı *@
+                    <p>Hakkımda</p> 
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Experience" class="nav-link">
                     <i class="la la-briefcase"></i>
-                    <p>Deneyimler</p> @* Tamamlandı *@
+                    <p>Deneyimler</p> 
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Skill" class="nav-link">
                     <i class="la la-cogs"></i>
-                    <p>Yeteneklerim</p> @* Tamamlandı *@
+                    <p>Yeteneklerim</p> 
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Feature" class="nav-link">
-                    <i class="la la-star"></i> @* Tamamlandı *@
+                    <i class="la la-star"></i> 
                     <p>Özellikler</p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a asp-controller="Admin" asp-action="Contact" class="nav-link">
-                    <i class="la la-envelope"></i>
-                    <p>İletişim Bilgileri</p> @* Tamamlandı *@
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="Portfolio" class="nav-link">
                     <i class="la la-folder-open"></i>
-                    <p>Projelerim</p> @* Tamamlandı *@
+                    <p>Projelerim</p> 
                 </a>
             </li>
 
             <li class="nav-item">
                 <a asp-controller="Admin" asp-action="SocialMedia" class="nav-link">
                     <i class="la la-share-alt"></i>
-                    <p>Sosyal Medya</p> @* Tamamlandı *@
+                    <p>Sosyal Medya</p> 
                 </a>
             </li>
-
-            <li class="nav-item">
-                <a asp-controller="Admin" asp-action="Logout" class="nav-link">
-                    <i class="la la-sign-out"></i>
-                    <p>Çıkış Yap</p>
-                </a>
-            </li>
-
         </ul>
-
-
     </div>
 </div>
