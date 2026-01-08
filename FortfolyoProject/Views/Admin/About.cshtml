@@ -1,0 +1,43 @@
+﻿@model List<About>
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Hakkımda</div>
+            </div>
+            <div class="card-body">
+                <table class="table table-head-bg-success">
+                    <thead>
+                        <tr>
+                            <th scope="col">Başlık</th>
+                            <th scope="col">Açıklama</th>
+                            <th scope="col">Detay</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@(item.Title)</td>
+                                <td>@(item.SubDescription.Length < 40 ? item.SubDescription : item.SubDescription.Substring(0, 40) + " ...")</td>
+                                <td>@(item.Details.Length < 40 ? item.Details : item.Details.Substring(0, 40) + " ...")</td>
+                                <td>
+                                    <a asp-controller="Admin" asp-action="EditAbout" asp-route-id="@item.AboutId" class="btn btn-warning">Edit</a>
+                                    <a asp-controller="Admin" asp-action="DeleteAbout" asp-route-id="@item.AboutId" class="btn btn-danger"> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <a asp-controller="Admin" asp-action="AddAbout" class="btn btn-primary"> Add</a>
+            </div>
+        </div>
+    </div>
+</div>
+

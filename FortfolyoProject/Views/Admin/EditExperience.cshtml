@@ -1,0 +1,32 @@
+﻿@model Experience
+@{
+    ViewData["Title"] = "EditExperience";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h1>Edit Experience</h1>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateExperience" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.ExperienceId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.Head, "Başlık", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Head, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <label asp-for="Title">Ünvan</label>
+    <input asp-for="Title" type="text" class="form-control" style="width:50%" />
+    <br />
+    <label asp-for="Date">Tarih</label>
+    <input asp-for="Date" type="text" class="form-control" style="width:50%" />
+    <br />
+    <label asp-for="Description">Açıklama</label>
+    <textarea asp-for="Description" type="text" rows="4" class="form-control" style="width:50%"> </textarea>
+    <br />
+    <label asp-for="UseTechnology">Kullanılan Teknolojiler</label>
+    <input asp-for="UseTechnology" type="text" class="form-control" style="width:50%" />
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+
+

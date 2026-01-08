@@ -1,0 +1,25 @@
+﻿@model About
+@{
+    ViewData["Title"] = "EditAbout";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h3>EditAbout</h3>
+<br />
+
+<form asp-controller="Admin" asp-action="UpdateAbout" method="post" class="form-control">
+
+    @Html.TextBoxFor(x => x.AboutId, new { @type = "hidden" })
+    <br />
+    @Html.LabelFor(x => x.Title, "Başlık", new { @style = "width:50%" })
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @style = "width:50%" })
+    <br />
+    <label asp-for="SubDescription">Açıklama</label>
+    <textarea asp-for="SubDescription" type="text" rows="5" class="form-control" style="width:50%"> </textarea>
+    <br />
+    <label asp-for="Details">Detaylar</label>
+    <textarea asp-for="Details" type="text" rows="5" class="form-control" style="width:50%"> </textarea>
+    <br />
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+
