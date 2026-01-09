@@ -1,0 +1,19 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "EditMessage";
+    Layout = "~/Views/Admin/IndexLayout.cshtml";
+}
+
+<h1> Mesaj Görüntüle</h1>
+<br />
+
+<div class="modal-body">
+    <label asp-for="Details">Mesaj İçeriği</label>
+    <textarea asp-for="Details" type="text" class="form-control" rows="3" style="width:50%"></textarea>
+</div>
+<div class="modal-footer">
+    <a href="@Url.Action("Inbox")" class="btn btn-danger btn-sm">Return</a>
+</div>
+
+
+

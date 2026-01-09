@@ -1,6 +1,8 @@
 ﻿using FortfolyoProject.DataAccessLayer.Context;
 using FortfolyoProject.DataAccessLayer.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FortfolyoProject.Controllers
 {
@@ -508,5 +510,58 @@ namespace FortfolyoProject.Controllers
         #endregion
 
         #endregion
+
+        #region Message
+
+        public IActionResult Inbox()
+        {
+            var values = context.Messages.ToList();
+            return View(values);
+        }
+
+        public IActionResult ChangeMessageStatus(int id)
+        {
+            var message = context.Messages.Find(id);
+            message.IsRead = !message.IsRead;
+            context.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+
+        [HttpPost]
+        public IActionResult SendMessageForIndexPage(Message m)
+        {
+            m.SendDate = DateTime.Now;
+            m.IsRead = false;
+            context.Messages.Add(m);
+            context.SaveChanges();
+            TempData["Message"] = "Mesajınız başarıyla gönderildi. Onaylandıktan sonra size dönüş yapılacaktır.";
+
+            return RedirectToAction("Index", "Default");
+        }
+
+        #region Delete
+
+        public IActionResult DeleteMessage(int id)
+        {
+            var deletedvalue = context.Messages.Find(id);
+            context.Messages.Remove(deletedvalue);
+            context.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+        #endregion
+
+        #region Edit
+
+        [HttpGet]
+        public IActionResult EditMessage(int id)
+        {
+            var values = context.Messages.Find(id);
+            return View("EditMessage", values);
+        }
+
+        #endregion
+
+        #endregion
+
     }
 }

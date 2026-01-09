@@ -28,7 +28,7 @@ namespace FortfolyoProject.Controllers
                 var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name, getadmin[0].Mail),
-                        new Claim("NameSurname", getadmin[0].Name + getadmin[0].Surname),
+                        new Claim("NameSurname", getadmin[0].Name + " " + getadmin[0].Surname),
                         new Claim("Role", getadmin[0].RoleType)
                     };
 
