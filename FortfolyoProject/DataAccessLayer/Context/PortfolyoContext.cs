@@ -7,7 +7,7 @@ namespace FortfolyoProject.DataAccessLayer.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=YIGITORUCU\\MY_UDEMY_KURSU;Initial Catalog=DB_UdemyFortfolyoProject;Integrated Security=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=MUHSINYIGIT\\MY_UDEMY_KURSU;Initial Catalog=DB_UdemyFortfolyoProject;Integrated Security=True;TrustServerCertificate=True");
         }
 
         public DbSet<About> Abouts { get; set; }
